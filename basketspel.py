@@ -24,7 +24,11 @@ while not done:
 
     pygame.draw.rect(screen, ORANGECOURT, [0, 300, 900, 300])
     pygame.draw.ellipse(screen, BLACK, [250, 320, 1200, 260], 20)
-
+    pygame.draw.rect(screen, BLACK, [575, 380, 500, 125])
+    pygame.draw.rect(screen, ORANGECOURT, [590, 395, 400, 95])
+    pygame.draw.arc(screen, BLACK, [455,395,250,100],  PI/2,     PI, 2)
+    pygame.draw.arc(screen, BLACK,  [455,395,250,100],    PI, 3*PI/2, 2)
+    
     pygame.display.flip()
 
     clock.tick(60)
