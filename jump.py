@@ -11,13 +11,9 @@ SHIRTNUMBER = (243, 255, 0)
 # Player position
 x_player = 180
 y_player = 430
-v = 5
-m = 1
 
-isjump = False
-
-
-
+x_playerspeed = 0
+y_playerspeed = 0
 
 # Screen
 size = (900,600)
@@ -33,52 +29,23 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-    
-    keys = pygame.key.get_pressed() 
-        
-    if isjump == False: 
-   
-        # if space bar is pressed 
-        if keys[pygame.K_SPACE]: 
-                  
-            # make isjump equal to True 
-            isjump = True
-               
-    if isjump : 
-        # calculate force (F). F = 1 / 2 * mass * velocity ^ 2. 
-        F =(1 / 2)*m*(v**2) 
-           
-        # change in the y co-ordinate 
-        y_player -= F 
-           
-        # decreasing velocity while going up and become negative while coming down 
-        v = v-1
-           
-        # object reached its maximum height 
-        if v<0: 
-               
-            # negative sign is added to counter negative velocity 
-            m =-1
-   
-        # objected reaches its original state 
-        if v ==-6: 
-   
-            # making isjump equal to false  
-            isjump = False
-  
-     
-            # setting original values to v and m 
-            v = 5
-            m = 1
 
-        
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                if jumping == False:                   
+                    jumping = True
+                    y_playerspeed = -3
+                    if y_player < 200:
+                        y_playerspeed = 3
 
                 
 
     # --- Game logic
 
     # The jump
-    
+    if jumping == True:
+        y_player = y_player + gravity
+    y_player = y_player + y_playerspeed
 
     screen.fill(WHITE)
 
