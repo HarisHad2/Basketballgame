@@ -11,7 +11,7 @@ SHIRTNUMBER = (243, 255, 0)
 # Player position
 x_player = 180
 y_player = 430
-v = 5
+v = 5 
 m = 1
 
 isjump = False
@@ -26,7 +26,7 @@ pygame.display.set_caption("Basketball Game")
 
 done = False
 jumping = False
-gravity = 1.2
+
 clock = pygame.time.Clock()
 
 while not done:
@@ -36,38 +36,20 @@ while not done:
     
     keys = pygame.key.get_pressed() 
         
-    if isjump == False: 
-   
-        # if space bar is pressed 
-        if keys[pygame.K_SPACE]: 
-                  
-            # make isjump equal to True 
+    if isjump == False:           
+        if keys[pygame.K_SPACE]:                             
             isjump = True
-               
-    if isjump : 
-        # calculate force (F). F = 1 / 2 * mass * velocity ^ 2. 
-        F =(1 / 2)*m*(v**2) 
-           
-        # change in the y co-ordinate 
-        y_player -= F 
-           
-        # decreasing velocity while going up and become negative while coming down 
-        v = v-1
-           
-        # object reached its maximum height 
-        if v<0: 
-               
-            # negative sign is added to counter negative velocity 
-            m =-1
-   
-        # objected reaches its original state 
-        if v ==-6: 
-   
-            # making isjump equal to false  
-            isjump = False
-  
-     
-            # setting original values to v and m 
+
+    if isjump :     
+        F =(1 / 4)*m*(v**4)               
+        y_player -= F      
+        v = v-1                
+      
+        if v<0:      
+            m =-1  
+
+        if v == -6:             
+            isjump = False           
             v = 5
             m = 1
 
@@ -77,7 +59,7 @@ while not done:
 
     # --- Game logic
 
-    # The jump
+    
     
 
     screen.fill(WHITE)
