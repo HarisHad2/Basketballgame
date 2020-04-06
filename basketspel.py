@@ -7,6 +7,7 @@ WHITE = ( 255, 255, 255)
 ORANGECOURT = ( 248, 193, 120)
 BLACK = ( 0, 0, 0)
 SHIRTNUMBER = (243, 255, 0)
+RED = (255, 0, 0)
 
 # Player position
 x_player = 180
@@ -78,7 +79,11 @@ while not done:
     number = font.render("04", True, SHIRTNUMBER)
     screen.blit(number, [190, y_player + 10])
 
-    
+    #stolpen
+    pygame.draw.rect(screen, BLACK, [850,45,15,400],)
+
+    #korgen
+    pygame.draw.rect(screen, RED, [750,140,100,8])
 
     pygame.display.flip()
 
