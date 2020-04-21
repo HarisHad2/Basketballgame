@@ -11,7 +11,7 @@ SHIRTNUMBER = (243, 255, 0)
 RED = (255, 0, 0)
 
 # Player position
-playerImg = pygame.image.load(r'C:\Users\Haris Hadziabdic\Pictures\basketball-player (21).png')
+playerImg = pygame.image.load("basketball-player (21).png")
 x_player = 150
 y_player = 300
 v = 5 
@@ -79,13 +79,10 @@ while not done:
     pygame.draw.rect(screen, ORANGECOURT, [590, 495, 400, 95])
     pygame.draw.arc(screen, BLACK, [455,495,250,100],  PI/2,     PI, 2)
     pygame.draw.arc(screen, BLACK,  [455,495,250,100],    PI, 3*PI/2, 2)
-    player()
+    
     # Player
-    #pygame.draw.rect(screen, BLACK, [x_player, y_player, 50, 50])
-    #font = pygame.font.SysFont('Calibri', 25, True, False)
-    #number = font.render("04", True, SHIRTNUMBER)
-    #screen.blit(number, [190, y_player + 10])
-
+    player()
+    
     #stolpen
     pygame.draw.rect(screen, BLACK, [850,45,15,500],)
 
