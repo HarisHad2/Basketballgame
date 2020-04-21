@@ -11,10 +11,14 @@ SHIRTNUMBER = (243, 255, 0)
 RED = (255, 0, 0)
 
 # Player position
-x_player = 180
-y_player = 430
+playerImg = pygame.image.load(r'C:\Users\Haris Hadziabdic\Pictures\basketball-player (21).png')
+x_player = 150
+y_player = 300
 v = 5 
 m = 1
+
+def player():
+    screen.blit(playerImg, (x_player, y_player))
 
 isjump = False
 
@@ -22,7 +26,7 @@ isjump = False
 
 
 # Screen
-size = (900,600)
+size = (900,700)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Basketball Game")
 
@@ -66,22 +70,24 @@ while not done:
 
     screen.fill(WHITE)
 
-    # Pitch
-    pygame.draw.rect(screen, ORANGECOURT, [0, 300, 900, 300])
-    pygame.draw.ellipse(screen, BLACK, [250, 320, 1200, 260], 20)
-    pygame.draw.rect(screen, BLACK, [575, 380, 500, 125])
-    pygame.draw.rect(screen, ORANGECOURT, [590, 395, 400, 95])
-    pygame.draw.arc(screen, BLACK, [455,395,250,100],  PI/2,     PI, 2)
-    pygame.draw.arc(screen, BLACK,  [455,395,250,100],    PI, 3*PI/2, 2)
     
+
+    # Pitch
+    pygame.draw.rect(screen, ORANGECOURT, [0, 400, 900, 300])
+    pygame.draw.ellipse(screen, BLACK, [250, 420, 1200, 260], 20)
+    pygame.draw.rect(screen, BLACK, [575, 480, 500, 125])
+    pygame.draw.rect(screen, ORANGECOURT, [590, 495, 400, 95])
+    pygame.draw.arc(screen, BLACK, [455,495,250,100],  PI/2,     PI, 2)
+    pygame.draw.arc(screen, BLACK,  [455,495,250,100],    PI, 3*PI/2, 2)
+    player()
     # Player
-    pygame.draw.rect(screen, BLACK, [x_player, y_player, 50, 50])
-    font = pygame.font.SysFont('Calibri', 25, True, False)
-    number = font.render("04", True, SHIRTNUMBER)
-    screen.blit(number, [190, y_player + 10])
+    #pygame.draw.rect(screen, BLACK, [x_player, y_player, 50, 50])
+    #font = pygame.font.SysFont('Calibri', 25, True, False)
+    #number = font.render("04", True, SHIRTNUMBER)
+    #screen.blit(number, [190, y_player + 10])
 
     #stolpen
-    pygame.draw.rect(screen, BLACK, [850,45,15,400],)
+    pygame.draw.rect(screen, BLACK, [850,45,15,500],)
 
     #korgen
     pygame.draw.rect(screen, RED, [750,140,100,8])
