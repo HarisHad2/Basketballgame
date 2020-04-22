@@ -28,7 +28,7 @@ def player(x,y):
     screen.blit(playerImg, (x, y))
 
 def ball(x,y):
-    screen.blit(ballImg, (x, y))
+    screen.blit(ballImg, (x + 105, y - 25))
 
 isjump = False
 
@@ -50,8 +50,9 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
     
-    keys = pygame.key.get_pressed() 
-        
+    keys = pygame.key.get_pressed()
+
+    # Jump/Shoot    
     if isjump == False:           
         if keys[pygame.K_SPACE]:                             
             isjump = True
@@ -92,7 +93,7 @@ while not done:
     
     # Player
     player(x_player, y_player)
-    ball(x_ball, y_ball)
+    ball(x_player, y_player)
     
     #stolpen
     pygame.draw.rect(screen, BLACK, [850,45,15,500],)

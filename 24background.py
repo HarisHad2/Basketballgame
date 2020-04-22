@@ -11,7 +11,7 @@ SHIRTNUMBER = (243, 255, 0)
 RED = (255, 0, 0)
 
 # Player position
-playerImg = pygame.image.load("basketball-player (21) (1).png")
+playerImg = pygame.image.load("basketball-player (21).png")
 x_player = 150
 y_player = 300
 v = 5 
@@ -30,7 +30,7 @@ def player(x,y):
     screen.blit(playerImg, (x, y))
 
 def ball(x,y):
-    screen.blit(ballImg, (x, y))
+    screen.blit(ballImg, (x + 105, y - 25))
 
 isjump = False
 
@@ -95,7 +95,7 @@ while not done:
     
     # Player
     player(x_player, y_player)
-    ball(x_ball, y_ball)
+    ball(x_player, y_player)
     
     #stolpen
     pygame.draw.rect(screen, BLACK, [850,45,15,500],)
