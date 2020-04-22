@@ -15,15 +15,15 @@ x_player = 150
 y_player = 300
 v = 5 
 m = 1
-b = 5
-mb = 1
+
 
 # Ball
 ballImg = pygame.image.load("basketball2.png")
 x_ball = 255
 y_ball = 275
 ballPosX = 0
-
+b = 5
+mb = 1
 
 
 #background
