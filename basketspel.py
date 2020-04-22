@@ -47,6 +47,10 @@ def ball(x,y):
     screen.blit(ballImg, (x, y))
 
 
+# Score
+score = 0 
+Font = pygame.font.SysFont("monospace", 35)
+
 # Screen
 size = (900,700)
 screen = pygame.display.set_mode(size)
@@ -78,21 +82,23 @@ while not done:
                 y_ball -= (jumpCount * abs(jumpCount)) * 0.5
             if jumpCount == -1:            
                 ballPosX = 15            
-                ballPosY = 0.75
+                ballPosY = 1
                 
             #print(jumpCount)
             #print(y_player)
         else: 
             jumpCount = 10
-            isJump = False
+            isJump = False            
     if x_ball == 765:
         ballPosX = 0
         ballPosY = 0
         x_ball = 255
         y_ball = 275
+        score += 1
    
-
-    
+    text = "Score:" + str(score)
+    label = Font.render(text, 1, (0,0,0))
+        
                 
 
     # --- Game logic
@@ -123,6 +129,8 @@ while not done:
     #korgen
     pygame.draw.rect(screen, RED, [750,210,100,8])
 
+    # Score
+    screen.blit(label, (10, 10))
     pygame.display.flip()
 
     clock.tick(60) 
