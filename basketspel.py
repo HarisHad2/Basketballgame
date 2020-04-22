@@ -15,11 +15,15 @@ x_player = 150
 y_player = 300
 v = 5 
 m = 1
+b = 5
+mb = 1
 
 # Ball
 ballImg = pygame.image.load("basketball2.png")
-x_ball = x_player + 105
-y_ball = y_player - 25
+x_ball = 255
+y_ball = 275
+ballPosX = 0
+
 
 
 #background
@@ -29,7 +33,7 @@ def player(x,y):
     screen.blit(playerImg, (x, y))
 
 def ball(x,y):
-    screen.blit(ballImg, (x + 105, y - 25))
+    screen.blit(ballImg, (x, y))
 
 isjump = False
 
@@ -59,24 +63,43 @@ while not done:
 
     if isjump :     
         F =(1 / 9)*m*(v**4)               
-        y_player -= F      
-        v = v-0.5              
-      
+        y_player -= F 
+        v = v-0.5             
+        
         if v<0:      
             m =-1  
+
+        if v == -2.5:
+            ballPosX = 15
+            
 
         if v == -5.5:             
             isjump = False           
             v = 5
             m = 1
 
-        
+    if isjump:
+        if v > -2.5:
+            BF =(1 / 9)*mb*(b**4)
+            y_ball -= BF     
+            b = b-0.5   
 
+        if b<0:      
+            m =-1  
+
+        if b == -2.5:
+            ballPosX = 15
+            
+
+        if b == -5.5:             
+            isjump = False           
+            b = 5
+            mb = 1
                 
 
     # --- Game logic
 
-    
+    x_ball += ballPosX
     
 
     screen.fill(WHITE)
@@ -94,7 +117,7 @@ while not done:
     
     # Player
     player(x_player, y_player)
-    ball(x_player, y_player)
+    ball(x_ball, y_ball)
     
     #stolpen
     pygame.draw.rect(screen, BLACK, [850,45,15,500],)
