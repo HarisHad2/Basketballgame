@@ -19,13 +19,13 @@ mixer.music.play(-1)
 playerImg = pygame.image.load("basketball-player (21).png")
 x_player = 150
 y_player = 300
-v = 5 
-m = 1
 
 
-vel = 5
+
+
 
 isJump = False
+
 jumpCount = 10
 
 # Ball
@@ -33,8 +33,8 @@ ballImg = pygame.image.load("basketball2.png")
 x_ball = 255
 y_ball = 275
 ballPosX = 0
-b = 5
-mb = 1
+ballPosY = 0
+
 
 
 #background
@@ -46,10 +46,6 @@ def player(x,y):
 def ball(x,y):
     screen.blit(ballImg, (x, y))
 
-#isjump = False
-
-
-
 
 # Screen
 size = (900,700)
@@ -57,7 +53,7 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Basketball Game")
 
 done = False
-#jumping = False
+
 
 clock = pygame.time.Clock()
 
@@ -68,62 +64,41 @@ while not done:
     
     keys = pygame.key.get_pressed() 
         
-    #if isjump == False:           
-        #if keys[pygame.K_SPACE]:                             
-        #    isjump = True
             
     if not(isJump): 
-        #if keys[pygame.K_UP] and y > vel:
-            #y -= vel
-
-        #if keys[pygame.K_DOWN] and y < 500 - height - vel:
-            #y += vel
 
         if keys[pygame.K_SPACE]:
             isJump = True
+            
     else:
-        if jumpCount >= -10:
+        if jumpCount >= -10:           
             y_player -= (jumpCount * abs(jumpCount)) * 0.5
             jumpCount -= 1
+            if jumpCount > -1:
+                y_ball -= (jumpCount * abs(jumpCount)) * 0.5
+            if jumpCount == -1:            
+                ballPosX = 15            
+                ballPosY = 0.75
+                
+            #print(jumpCount)
+            #print(y_player)
         else: 
             jumpCount = 10
             isJump = False
-    #if isjump:     
-        #F =(1 / 9)*m*(v**4)               
-        #y_player -= F 
-        #v = v-0.5             
-        
-        #if v<0:      
-        #    m =-1  
-            
+    if x_ball == 765:
+        ballPosX = 0
+        ballPosY = 0
+        x_ball = 255
+        y_ball = 275
+   
 
-        #if v == -5.5:             
-         #   isjump = False           
-         #   v = 5
-         #   m = 1
-
-    #if isjump:
-     #   if b > -2.5:
-    #        BF =(1 / 9)*mb*(b**4)
-     #       y_ball -= BF     
-     #       b = b-0.5   
-
-     #   if b<0:      
-    ##        m =-1  
-#
-    #    if b == -2.5:
-     #       ballPosX = 15
-            
-
-     #   if b == -5.5:                        
-    #        b = 5
-    #        mb = 1
+    
                 
 
     # --- Game logic
 
     x_ball += ballPosX
-    
+    y_ball += ballPosY
 
     screen.fill(WHITE)
 
@@ -146,7 +121,7 @@ while not done:
     pygame.draw.rect(screen, BLACK, [850,45,15,500],)
 
     #korgen
-    pygame.draw.rect(screen, RED, [750,140,100,8])
+    pygame.draw.rect(screen, RED, [750,210,100,8])
 
     pygame.display.flip()
 
