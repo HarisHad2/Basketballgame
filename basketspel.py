@@ -1,4 +1,6 @@
 import pygame
+from pygame import mixer
+
 pygame.init()
 
 PI = 3.141592653
@@ -8,6 +10,10 @@ ORANGECOURT = ( 248, 193, 120)
 BLACK = ( 0, 0, 0)
 SHIRTNUMBER = (243, 255, 0)
 RED = (255, 0, 0)
+
+# background sound
+mixer.music.load("Jock Jams - Are You ready For This.mp3")
+mixer.music.play(-1)
 
 # Player position
 playerImg = pygame.image.load("basketball-player (21).png")
