@@ -15,17 +15,20 @@ RED = (255, 0, 0)
 mixer.music.load("Jock Jams - Are You ready For This.mp3")
 mixer.music.play(-1)
 
-# Player position
+# Player 
 playerImg = pygame.image.load("basketball-player (21).png")
 x_player = 150
 y_player = 300
 
+# Net
 netImg = pygame.image.load("net-115x115.png")
 netX = 750
 netY = 210
 
-def net():
-    screen.blit(netImg, (netX, netY))
+# Blocker
+blockerImg = pygame.image.load("basketball-player (2).png")
+x_blocker = 350
+y_blocker = 350
 
 
 
@@ -51,6 +54,11 @@ def player(x,y):
 def ball(x,y):
     screen.blit(ballImg, (x, y))
 
+def net():
+    screen.blit(netImg, (netX, netY))
+
+def blocker(x,y):
+    screen.blit(blockerImg, (x, y))
 
 # Score
 score = 0 
@@ -129,6 +137,7 @@ while not done:
     # Player
     player(x_player, y_player)
     ball(x_ball, y_ball)
+    blocker(x_blocker, y_blocker)
     
     #stolpen
     pygame.draw.rect(screen, BLACK, [850,45,15,500],)
