@@ -1,4 +1,3 @@
-
 import pygame
 pygame.init()
 
@@ -23,6 +22,8 @@ x_ball = x_player + 105
 y_ball = y_player - 25
 
 
+#background
+background = pygame.image.load("rip24.png")
 
 def player(x,y):
     screen.blit(playerImg, (x, y))
@@ -50,9 +51,8 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
     
-    keys = pygame.key.get_pressed()
-
-    # Jump/Shoot    
+    keys = pygame.key.get_pressed() 
+        
     if isjump == False:           
         if keys[pygame.K_SPACE]:                             
             isjump = True
@@ -81,7 +81,8 @@ while not done:
 
     screen.fill(WHITE)
 
-    
+    #background image
+    screen.blit(background,(18, -140))
 
     # Pitch
     pygame.draw.rect(screen, ORANGECOURT, [0, 400, 900, 300])
