@@ -20,7 +20,12 @@ playerImg = pygame.image.load("basketball-player (21).png")
 x_player = 150
 y_player = 300
 
+netImg = pygame.image.load("net-115x115.png")
+netX = 750
+netY = 210
 
+def net():
+    screen.blit(netImg, (netX, netY))
 
 
 
@@ -110,6 +115,8 @@ while not done:
 
     #background image
     screen.blit(background,(18, -140))
+    
+    net()
 
     # Pitch
     pygame.draw.rect(screen, ORANGECOURT, [0, 400, 900, 300])
