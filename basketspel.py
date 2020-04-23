@@ -27,14 +27,17 @@ netY = 210
 
 # Blocker
 blockerImg = pygame.image.load("basketball-player (2).png")
-x_blocker = 350
-y_blocker = 350
+x_blocker = 345
+y_blocker = 328
 
 
-
+# Jump for shooter
 isJump = False
-
 jumpCount = 10
+
+# Jump for blocker
+bisJump = False
+bjumpCount = 10
 
 # Ball
 ballImg = pygame.image.load("basketball2.png")
@@ -94,21 +97,51 @@ while not done:
             if jumpCount > -1:
                 y_ball -= (jumpCount * abs(jumpCount)) * 0.5
             if jumpCount == -1:            
-                ballPosX = 15            
+                ballPosX = 30            
                 ballPosY = 1
                 
-            #print(jumpCount)
-            #print(y_player)
         else: 
             jumpCount = 10
-            isJump = False            
+            isJump = False  
+
+    #print(x_ball)
+    #print(y_ball)    
+
     if x_ball == 765:
         ballPosX = 0
         ballPosY = 0
         x_ball = 255
         y_ball = 275
         score += 1
-   
+
+    #if (x_ball >= x_blocker and (x_ball + 64) < x_blocker) or (x_blocker >= x_ball and (x_blocker + 30) < x_ball):
+        #if (y_ball >= y_blocker and (y_ball - 64) < y_blocker) or (y_blocker >= y_ball and (y_blocker + 100) < y_ball):
+    #if y_ball == y_blocker and x_ball == x_blocker:
+    #if (x_ball == x_blocker) and (y_ball >= y_blocker and y_ball < y_blocker):
+         
+     #   x_ball = 255
+     #   y_ball = 275
+    #    ballPosX = 0
+     #   ballPosY = 0
+
+    if not(bisJump): 
+
+        if keys[pygame.K_UP]:
+            bisJump = True
+            
+    else:
+        if bjumpCount >= -10:           
+            y_blocker -= (bjumpCount * abs(bjumpCount)) * 0.5
+            bjumpCount -= 1     
+            #print(x_blocker)  
+            #print(y_blocker)
+
+        else: 
+            bjumpCount = 10
+            bisJump = False            
+
+    
+
     text = "Score:" + str(score)
     label = Font.render(text, 1, (0,0,0))
         
